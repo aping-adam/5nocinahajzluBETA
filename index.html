@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>main menu</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <script>
+if(localStorage.getItem("hasWon") == "false" || localStorage.getItem("hasWon") == "true"){
+    console.log("je zapsano");
+}
+else{
+    localStorage.setItem("hasWon", "false");
+}
+    </script>
+    <div id="screen"></div>
+    <div id="holder">  
+        <div id="menu">
+            <p id="gameName">Pet noci<br>na</p>
+            <p id="gameName1">HAJZLU</p>
+            <div class="centering">
+                    <button id="playButton"onclick="window.location.href='/game/'">HRADt</button><br>
+            </div>
+            <div class="centering">
+                <button id="dontWorkButton" onclick="window.location.href='/game1/'">hrat</button>
+            </div>
+            <div class="centering">
+                <button id="night2" onclick="
+                    
+                    if(localStorage.getItem('hasWon') == 'true'){
+                        window.location.href='/win/';
+                    }
+                    else{
+                        document.getElementById('nigth2').disabled = true;
+                    }
+
+                    ">NIGHT 2</button>
+            </div>
+            <div class="centering">
+                <button id="rules" onclick="window.location.href='/help/'">POMOC!!!</button>
+            </div>
+            <img src="images/danPrisel.png" id="danImage">
+        </div>
+        <div>
+            <video id="matyGlitch" src="videos/1206.mp4" autoplay loop muted playsinline></video>
+        </div>
+    </div>
+</body>
+<script src="script.js">
+</script>
+</html>

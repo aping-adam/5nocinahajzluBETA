@@ -1,0 +1,163 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+html{
+    background-color: black;
+    overflow: hidden;
+}
+
+#gameHolder{
+    display: flex;
+    justify-content: center;
+}
+#gameWindow{
+    width: 540px;
+    height: 720px;
+    border: 2px solid white;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url(images/toiletDoorOpen.png);
+}
+#mobileButton{
+    position: absolute;
+    left: calc(50% - 150px);
+    bottom: 10px;
+    width: 300px;
+    height: 50px;
+    font-size: 30px;
+    z-index: 1;
+    background: linear-gradient(0deg, red 0%, blue 100%);
+}
+#mobileButton:active{
+    background: rgba(255, 0, 0, 0.555);
+}
+#mobile{
+    position: absolute;
+    left: calc(50% - 130px);
+    bottom: 40px;
+    border: 2px solid red;
+    height: 600px;
+    width: 250px;
+    border-radius: 20px;
+    border: 5px solid rgb(255, 0, 221);
+    animation-name: mobilePull;
+    animation-timing-function: ease;
+}
+#map{
+    position: absolute;
+    top: 350px;
+    height: 250px;
+    width: 250px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url(images/New\ project.png);
+}
+#cam1{
+    position: absolute;
+    top: 57px;
+    left: 13px;
+    border: 2px solid black;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.699);
+}
+#cam1:hover{
+    background-color: red;
+}
+#cam1:active{
+    background-color: rgba(255, 0, 0, 0.308);
+}
+#cam2{
+    position: absolute;
+    top: 57px;
+    right: 20px;
+    border: 2px solid black;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.699);
+}
+#cam2:hover{
+    background-color: red;
+}
+#cam2:active{
+    background-color: rgba(255, 0, 0, 0.308);
+}
+#cam3{
+    position: absolute;
+    top: 90px;
+    right: 20px;
+    border: 2px solid black;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.699);
+}
+#cam3:hover{
+    background-color: red;
+}
+#cam3:active{
+    background-color: rgba(255, 0, 0, 0.308);
+}
+#cam4{
+    position: absolute;
+    top: 130px;
+    right: 20px;
+    border: 2px solid black;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.699);
+}
+#cam4:hover{
+    background-color: red;
+}
+#cam4:active{
+    background-color: rgba(255, 0, 0, 0.308);
+}
+#cam5{
+    position: absolute;
+    bottom: 100px;
+    left: 40px;
+    border: 2px solid black;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.699);
+}
+#cam5:hover{
+    background-color: red;
+}
+#cam5:active{
+    background-color: rgba(255, 0, 0, 0.308);
+}
+#activeCamera{
+    height: 100%;
+    width: 100%;
+    background-color: blue;
+    border-radius: 15px 15px 0px 0px;
+    background-image: url(images/rooms/koupelna.jpg);
+    background-repeat: no-repeat;
+    background-position: 0px -100px;
+    background-size: cover;
+}
+#maty{
+    height: 200px;
+    width: auto;
+    position: absolute;
+    bottom: 250px;
+    z-index: 1;
+}
+#kistan{
+    height: 250px;
+    width: auto;
+    position: absolute;
+    top: 85px;
+    right: 40px;
+}
+#danAdam{
+    height: 300px;
+    width: auto;
+    position: absolute;
+    top: 30px;
+    right: 20px;
+}
+
+@media screen and (max-width:480px){
+
+}

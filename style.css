@@ -1,0 +1,98 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    background-color: black;
+    overflow: hidden;
+}
+
+.centering{
+    display: flex;
+    justify-content: center;
+}
+
+#holder{
+    display: flex;
+}
+
+#menu{
+    height: 1000px;
+    width: 30%;
+}
+#gameName{
+    color: white;
+    font-family: fnafFont;
+    text-align: center;
+}
+#gameName1{
+    color: white;
+    font-size: 40px;
+    font-family: fnafFont;
+    text-align: center;
+}
+#playButton{
+    font-size: 25px;
+    border-radius: 10px white;
+}
+#playButton:hover{
+    color: white;
+    background-color: brown;
+}
+#dontWorkButton{
+    font-size: 25px;
+    border-radius: 10px white;
+    margin-top: 10px;
+}
+#dontWorkButton:hover{
+    color: white;
+    background-color: brown;
+}
+#night2{
+    font-size: 25px;
+    border-radius: 10px white;
+    margin-top: 10px;
+}
+
+#rules{
+    font-size: 10px;
+    margin-top: 20px;
+}
+#danImage{
+    margin-top: 10px;
+    width: 100%;
+    height: 40%;
+}
+
+#matyGlitch{
+    margin: 5px 0 0 10%;
+}
+
+
+@media screen and (max-width:540){
+    #screen{
+        width: 100%;
+        height: 1000px;
+        background-color: brown;
+        overflow-y: hidden;
+    }
+    #screen::after{
+        content: 'please, use on pc with page oppened on whole screen, or use fullscreen';
+    }
+}
+@media screen and (max-height:720){
+    #screen{
+        width: 100%;
+        height: 1000px;
+        background-color: brown;
+        overflow-y: hidden;
+    }
+    #screen::after{
+        content: 'please, use on pc with page oppened on whole screen';
+    }
+}
+
+@font-face {
+    font-family: 'fnafFont';
+    src: url(fonts/FiveFontsatFreddys-Regular.ttf);
+}

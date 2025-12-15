@@ -1,0 +1,119 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    background-color: black;
+}
+
+#game{
+    display: flex;
+    justify-content: center;
+}
+#gameWindow{
+    width: 540px;
+    height: 720px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url(/images/imagesForGame/toiletDoor.jpeg);
+}
+#progressHolder{
+    position: absolute;
+    top: 10px;
+    left: 170px;
+    width: 200px;
+    border: 2px solid black;
+    border-radius: 3px;
+}
+#progressBar{
+    width: 0%;
+    color: white;
+    background-color: brown;
+}
+#waterHolder{
+    position: absolute;
+    top: 40px;
+    left: 170px;
+    width: 200px;
+    border: 2px solid black;
+    border-radius: 3px;
+}
+#waterBar{
+    width: 100%;
+    color: black;
+    background-color: rgb(0, 88, 170);
+}
+#boomboxButton{
+    font-size: 40px;
+    height: 100px;
+    width: 130px;
+    position: absolute;
+    top: 15%;
+    right: 10%;
+}
+#drink{
+    width: 80px;
+    position: absolute;
+    top: 45%;
+    left: 45%;
+}
+#drinkButton{
+    position: absolute;
+    top: 45%;
+    left: 45%;
+}
+#rotateLeft{
+    height: 80px;
+    width: 20px;
+    position: absolute;
+    top: 45%;
+    left: 5px;
+}
+#openDoor{
+    position: absolute;
+    top: 399px;
+    right: 130px;
+}
+#pet{
+    position: absolute;
+    top: 45%;
+    right: 200px;
+}
+#rotateRight{
+    height: 80px;
+    width: 20px;
+    position: absolute;
+    top: 45%;
+    right: 5px;
+}
+#attack{
+    position: absolute;
+    left: 120px;
+    bottom: 10px;
+    height: 40px;
+    width: 300px;
+    font-size: 30px;
+}
+#babickaAttack{
+    position: absolute;
+    left: 120px;
+    bottom: 50px;
+    height: 40px;
+    width: 300px;
+    font-size: 30px;
+}
+
+
+.hideElement{
+    display: none;
+}
+@media screen and (max-width:720px){
+    #babickaAttack{
+        width: 200px;
+    }
+    #attack{
+        width: 200px;
+    }
+}
