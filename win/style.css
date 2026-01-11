@@ -21,6 +21,32 @@ html{
     background-size: cover;
     background-image: url(images/toiletDoorOpen.png);
 }
+#timer{
+    background-color: white;
+    color: black;
+    font-size: 30px;
+    width: 75px;
+}
+#doorButton{
+    position: absolute;
+    right: 50px;
+    top: 400px;
+    font-size: 30px;
+}
+#doorProgressHolder{
+    width: 200px;
+    height: 30px;
+    border: 2px solid white;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#doorProgressBar{
+    width: 50%;
+    height: 100%;
+    background-color: pink;
+}
 #mobileButton{
     position: absolute;
     left: calc(50% - 150px);

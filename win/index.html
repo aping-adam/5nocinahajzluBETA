@@ -5,16 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vyhrál j....</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="/icon.ico">
 </head>
 <body>
     <div id="gameHolder">        
         <div id="gameWindow">
+            <p id="timer"></p>
+            <div id="doorProgressHolder">
+                <div id="doorProgressBar"></div>
+            </div>
+            <button id="doorButton">close door</button>
             <button id="mobileButton">MOBILE</button>
             <div id="mobile">
                 <div id="activeCamera">
                     <img src="images/enemies/maty.png" id="maty">
                     <img src="images/enemies/kistanHatezidson.png" id="kistan">
                     <img src="images/enemies/danAdam.png" id="danAdam">
+                    <div id="computer"></div>
                 </div>
                 <div id="map">
                     <button id="cam1">cam<br>1</button>
@@ -26,6 +33,8 @@
             </div>
         </div>
     </div>
+    <audio src="audio/matySpawned.mp3" id="matySpawned"></audio>
+    <audio src="audio/SpotiDownloader.com - Třista z místa - Daniel Landa.mp3" id="matyBoombox"></audio>
 </body>
 <script src="script.js"></script>
 </html>
