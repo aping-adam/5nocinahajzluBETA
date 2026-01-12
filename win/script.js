@@ -42,7 +42,8 @@ mobileWindow.style.display = "none";
 document.getElementById("maty").style.display = "none";
 document.getElementById("kistan").style.display = "none";
 document.getElementById("danAdam").style.display = "none";
-let timer = 1000;
+let timer = 2000;
+let timerCounter = 0;
 let gameTime = 10;
 document.getElementById("timer").textContent = gameTime + ":00"
 let doorProgress = 100;
@@ -250,7 +251,7 @@ holdButton.addEventListener('mouseup', function() {
                 danAdamLocation = pathDanAdam[danAdamCounter];
                 break;
             default:
-                window.alert("error occured while reseting enemy path");
+                console.log("nobody was at the door");
                 break;
         }
         enemy = "none";
@@ -264,7 +265,7 @@ setInterval(()=>{ //maty killer and more xddd
     if(maty == true && activeCamera == "cam1" && mobileActive == true){
         if(matyKiller < 2){
             matyKiller++;
-            console.log("maty updated" + matyKiller)
+            //console.log("maty updated" + matyKiller)
         }
         else{
             window.location.href="/died";
@@ -274,7 +275,12 @@ setInterval(()=>{ //maty killer and more xddd
         matyKiller = 0;
     }
 
+    timerCounter++;
 
+    if(timerCounter < 200){
+        timerCounter = 0;
+        timer = timer - 200;
+    }
 }, 500);
 setInterval(()=>{ //enemy moves
     let skip = false;
@@ -294,7 +300,7 @@ setInterval(()=>{ //enemy moves
         if(doorOpen == true){
             if(deathCounter < 10){
                 deathCounter++;
-                console.log(deathCounter);
+                //console.log(deathCounter);
             }
             else{
                 window.location.href="/died/";
@@ -313,7 +319,7 @@ setInterval(()=>{ //enemy moves
                     if(kistanLocation == "attack"){
                         enemy = "kistan";
                         gameWindow.style.backgroundImage = "url(images/enemies/kistanDoor.png)";
-                        console.log("kistan is attacking");
+                        //console.log("kistan is attacking");
                     }
                     if(activeCamera == kistanLocation){
                         kistanDisplay.style.display = "none";
@@ -329,7 +335,7 @@ setInterval(()=>{ //enemy moves
                     if(danAdamLocation == "attack"){
                         enemy = "danAdam";
                         gameWindow.style.backgroundImage = "url(images/enemies/danAdamDoor.png)";
-                        console.log("danAdam is attacking");
+                        //console.log("danAdam is attacking");
                     }
                     if(activeCamera == danAdamLocation){
                         danAdamDisplay.style.display = "none";
@@ -349,9 +355,9 @@ setInterval(()=>{ //enemy moves
                     break;
                 }
             }
-            console.log("enemy spawned: " + enemy)
+            //console.log("enemy spawned: " + enemy)
         }
-        else{console.log("nothing spawned")}
+        //else{console.log("nothing spawned")}
     }
 }, timer);
 
