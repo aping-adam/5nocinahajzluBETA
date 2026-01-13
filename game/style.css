@@ -20,6 +20,10 @@ html{
     background-size: cover;
     background-image: url(/images/imagesForGame/toiletDoor.jpeg);
 }
+#timer{
+	background-color: white;
+	font-size: 30px;
+}
 #progressHolder{
     position: absolute;
     top: 10px;

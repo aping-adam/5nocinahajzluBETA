@@ -10,6 +10,34 @@
 <body>
     <div id="game">
         <div id="gameWindow">
+		<p id="timer"></p>
+		<script>
+
+const timerDisplay = document.getElementById("timer");
+let timer = 0;
+
+timerDisplay.textContent = timer + ":00";
+
+setInterval(()=>{
+	if(timer < 6){
+		timer++;
+		timerDisplay.textContent = timer + ":00";
+	}
+	else{
+		localStorage.setItem("hasWon", "true");
+		window.alert("vyhral jsi, gratuluji, nyni si uzij druhou noc");
+		window.location.href=("/won/");
+	}
+}, 30000);
+
+if(localStorage.getItem("hasWon") !== null){
+	console.log("hasWon arleady exists");
+}
+else{
+	localStorage.setItem("hasWon", "false");
+}
+
+		</script>
             <div id="progressHolder">
                 <div id="progressBar">shit</div>
             </div>
