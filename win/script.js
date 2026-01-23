@@ -20,11 +20,27 @@ cam4.onclick = () => viewCam("cam4");
 const cam5 = document.getElementById("cam5");
 cam5.onclick = () => viewCam("cam5");
 
+const coinButton = document.getElementById("coin");
+coinButton.onclick = collectCoin;
+
+const leftDoorButton = document.getElementById("leftDoorButton");
+leftDoorButton.onclick = () => kristianDoor("left");
+const rightDoorButton = document.getElementById("rightDoorButton");
+rightDoorButton.onclick = () => kristianDoor("right");
+
+const computer = document.getElementById("computer");
+
 const kistanDisplay = document.getElementById("kistan");
 let kistanCounter = 0;
 const matyDisplay = document.getElementById("maty");
 const danAdamDisplay = document.getElementById("danAdam");
 let danAdamCounter = 0;
+
+let kristian = false;
+let kristianPosition = "none";
+let kristianCounter = 0;
+let leftDoor = false;
+let rightDoor = false;
 
 const cams = [cam1, cam2, cam3, cam4, cam5];
 const pathKistan = ["cam4", "cam3", "cam1", "cam2", "cam3", "attack"];
@@ -42,13 +58,16 @@ mobileWindow.style.display = "none";
 document.getElementById("maty").style.display = "none";
 document.getElementById("kistan").style.display = "none";
 document.getElementById("danAdam").style.display = "none";
-let timer = 2000;
-let timerCounter = 0;
+computer.style.display = "none";
+let timer = 20000;
+let reset = 0;
 let gameTime = 10;
 document.getElementById("timer").textContent = gameTime + ":00"
 let doorProgress = 100;
 document.getElementById("doorProgressBar").style.width = doorProgress + "%";
 let doorOpen = true;
+let coin = false;
+let coinLocation = "none";
 
 if(localStorage.getItem("hasWon") == "false" || localStorage.getItem("hasWon") == "true"){
     console.log("je zapsano");
@@ -64,9 +83,11 @@ if(localStorage.getItem("hasWon") == "false"){ //kontrola jestli nezmenil URL
 else{
     window.alert("welcome");
 }
+coinButton.style.display = "none";
 
 function viewCam(cam){
     document.getElementById(activeCamera).style.backgroundColor = "";
+    computer.style.display = "none";
 
     activeCamera = cam;
     console.log("active cam: " + activeCamera);
@@ -93,6 +114,7 @@ function viewCam(cam){
     
         case "cam5":
             document.getElementById("activeCamera").style.backgroundImage = "url(images/rooms/kumbal.jpg)";
+            computer.style.display = "";
     
             break;
     }
@@ -101,8 +123,23 @@ function viewCam(cam){
     spawnEnemy();
 }
 
-    
-
+function kristianDoor(activeDoor){
+    switch(activeDoor){
+        case "left":
+            leftDoor = true;
+            rightDoor = false;
+            computer.style.backgroundImage = "url(images/kristian/kDoorsLeft.png";
+            rightDoorButton.disabled = true;
+            break;
+        
+        case "right":
+            leftDoor = false;
+            rightDoor = true;
+            computer.style.backgroundImage = "url(images/kristian/kDoorsRight.png";
+            leftDoorButton.disabled = true;
+            break;
+    }
+}
 
 function useMobile(){
     if(mobileActive == false){
@@ -211,6 +248,13 @@ function spawnEnemy(){
     else{
         danAdamDisplay.style.display = "none";
     }
+
+    if(coinLocation == activeCamera){
+        coinButton.style.display = "";
+    }
+    else{
+        coinButton.style.display = "none";
+    }
 }
 
 const holdButton = document.getElementById('doorButton');
@@ -238,7 +282,10 @@ holdButton.addEventListener('mouseup', function() {
     intervalId = null;  // Resetuje variable
     console.log('button is deactivated');
     if(enemy != "none" && doorProgress > 40){
-        window.location.href="/died/";
+        if(reset < 3){
+            reset++;
+            deathCounter = 0;
+        }
     }
     else{
         switch(enemy){
@@ -261,6 +308,11 @@ holdButton.addEventListener('mouseup', function() {
     document.getElementById("doorProgressBar").style.width = doorProgress + "%";
 });
 
+function collectCoin(){
+    coinButton.style.display = "none";
+    coin = false;
+}
+
 setInterval(()=>{ //maty killer and more xddd
     if(maty == true && activeCamera == "cam1" && mobileActive == true){
         if(matyKiller < 2){
@@ -275,14 +327,9 @@ setInterval(()=>{ //maty killer and more xddd
         matyKiller = 0;
     }
 
-    timerCounter++;
-
-    if(timerCounter < 200){
-        timerCounter = 0;
-        timer = timer - 200;
-    }
 }, 500);
-setInterval(()=>{ //enemy moves
+
+enemyInterval = setInterval(()=>{ //enemy moves
     let skip = false;
 
     if(maty == true){
@@ -361,6 +408,112 @@ setInterval(()=>{ //enemy moves
     }
 }, timer);
 
+let kIntervalId = null;
+
+setInterval(()=>{
+    if(kristian == true){
+        if(kIntervalId === null){
+            kIntervalId = setInterval(function(){
+                switch(kristianPosition){
+                    case "left":
+                        if(leftDoor == false){
+                            if(kristianCounter < 11){
+                                kristianCounter++;
+                                //console.log(kristianCounter);
+                            }
+                            else{
+                                window.alert("kristian is here...");
+                                window.location.href="/died/";
+                            }
+                        }
+                        else{
+                            kristianPosition = "none"
+                            kristianCounter = 0;
+                            kristian = false;
+                            //console.log("k je pryc");
+                            clearInterval(kIntervalId);
+                        }
+                        break;
+
+                    case "right":
+                        if(rightDoor == false){
+                            if(kristianCounter < 11){
+                                kristianCounter++;
+                                //console.log(kristianCounter);
+                            }
+                            else{
+                                window.alert("kristian is here...");
+                                window.location.href="/died/";
+                            }
+                        }
+                        else{
+                            kristianPosition = "none"
+                            kristianCounter = 0;
+                            kristian = false;
+                            console.log("k je pryc")
+                            clearInterval(kIntervalId);
+                        }
+                        break;
+
+                    default:
+                        kristianPosition = "none"
+                        kristianCounter = 0;
+                        kristian = false;
+                        clearInterval(kIntervalId);
+                }
+            }, 1000);
+        }
+    }
+
+    else{
+        if(Math.floor(Math.random()*11) > 5){
+            switch(Math.floor(Math.random()*2)){
+                case 0:
+                    kristian = true;
+                    kristianPosition = "left";
+
+                    leftDoor = false;
+                    rightDoor = false;
+                    computer.style.backgroundImage = "url(images/kristian/kDoorsOpen.png)";
+
+                    computer.style.backgroundImage = "url(images/kristian/kSpawnLeft.png)";
+                    break;
+                
+                case 1:
+                    kristian = true;
+                    kristianPosition = "right";
+
+                    leftDoor = false;
+                    rightDoor = false;
+                    computer.style.backgroundImage = "url(images/kristian/kDoorsOpen.png)";
+
+                    computer.style.backgroundImage = "url(images/kristian/kSpawnRight.png)";
+                    break;
+
+                default:
+                    console.error("error while updating kristian");
+            }
+            useMobile();
+            useMobile();
+        }
+        //console.log("kristian position: " + kristianPosition);
+    }
+}, 5000); //5th camera game
+
+setInterval(()=>{ //coins spawner
+    if(coin == true){
+        window.alert("ayo, penize tu mas vsude.. pozde");
+        window.location.href="/died/";
+    }
+    else{
+        coinLocation = "cam" + Math.floor(Math.random()*5+1);
+        coin = true;
+        useMobile();
+        useMobile();
+        console.log("coin is spawned at: " + coinLocation);
+    }
+}, 10000); 
+
 setInterval(()=>{
     gameTime = gameTime + 1;
     if(gameTime == 13){
@@ -371,4 +524,4 @@ setInterval(()=>{
         window.location.href="/";
     }
     document.getElementById("timer").textContent = gameTime + ":00"
-}, 30000)//time
+}, 30000);//time

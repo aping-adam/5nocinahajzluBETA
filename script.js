@@ -26,7 +26,13 @@ const imagesToLoad = [
     'win/images/rooms/koupelna.jpg',
     'win/images/rooms/kumbal.jpg',
     'win/images/rooms/loznice.jpg',
-    'win/images/rooms/pokoj.png'
+    'win/images/rooms/pokoj.png',
+    'win/images/coin.png',
+    'win/images/kristian/kDoorsLeft.png',
+    'win/images/kristian/kDoorsOpen.png',
+    'win/images/kristian/kDoorsRight.png',
+    'win/images/kristian/kSpawnLeft.png',
+    'win/images/kristian/kSpawnRight.png'
 ];
 
 let loadedImages = 0;

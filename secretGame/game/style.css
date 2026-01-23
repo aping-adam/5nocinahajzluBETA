@@ -1,0 +1,38 @@
+* {
+    padding: 0px;
+    margin: 0xp;
+}
+
+#gameCentering{
+    display: flex;
+    justify-content: center;
+}
+#gameWindow{
+    border: 2px solid red;
+    width: 600px;
+    height: 600px;
+    background-image: url(images/background.png);
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
+}
+#ball{
+    height: 100px;
+    width: 100px;
+    position: relative;
+    top: 400px;
+    left: 250px;
+    background-image: url(images/ballSprites/ball_sprite.png);
+}
+.buttons {
+    width: 60px;
+    height: 50px;
+    top: 430px;
+}
+#buttonLeft{
+    position: relative;
+    left: calc(50% - 70px);
+}
+#buttonRight{
+    position: relative;
+    left: 250px;
+}
