@@ -311,6 +311,7 @@ holdButton.addEventListener('mouseup', function() {
 function collectCoin(){
     coinButton.style.display = "none";
     coin = false;
+    coinLocation = "none";
 }
 
 setInterval(()=>{ //maty killer and more xddd
@@ -413,11 +414,12 @@ let kIntervalId = null;
 setInterval(()=>{
     if(kristian == true){
         if(kIntervalId === null){
+            
             kIntervalId = setInterval(function(){
                 switch(kristianPosition){
                     case "left":
                         if(leftDoor == false){
-                            if(kristianCounter < 11){
+                            if(kristianCounter < 101){
                                 kristianCounter++;
                                 //console.log(kristianCounter);
                             }
@@ -461,7 +463,7 @@ setInterval(()=>{
                         kristian = false;
                         clearInterval(kIntervalId);
                 }
-            }, 1000);
+            }, 100);
         }
     }
 
@@ -474,6 +476,10 @@ setInterval(()=>{
 
                     leftDoor = false;
                     rightDoor = false;
+
+                    rightDoorButton.disabled = false;
+                    leftDoorButton.disabled = false;
+                    
                     computer.style.backgroundImage = "url(images/kristian/kDoorsOpen.png)";
 
                     computer.style.backgroundImage = "url(images/kristian/kSpawnLeft.png)";
@@ -485,6 +491,10 @@ setInterval(()=>{
 
                     leftDoor = false;
                     rightDoor = false;
+
+                    rightDoorButton.disabled = false;
+                    leftDoorButton.disabled = false;
+                    
                     computer.style.backgroundImage = "url(images/kristian/kDoorsOpen.png)";
 
                     computer.style.backgroundImage = "url(images/kristian/kSpawnRight.png)";
